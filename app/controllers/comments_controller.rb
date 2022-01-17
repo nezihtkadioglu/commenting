@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
 
     def set_comments
       limit_id = params[:after_comment]
-      number = params[:comment_number]
+      number = params[:comment_number] || 10
       @main_resource = if params[:post_id]
                         Post.find(params[:post_id])
                       elsif params[:comment_id]

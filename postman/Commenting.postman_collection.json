@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "4642a92e-01b3-4afb-bb2e-fbc3061f686b",
+		"name": "Commenting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"post\": {\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus id diam a interdum. Nam gravida vitae nisl vel aliquet.\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/posts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": "Create a new Post\n\n| attribute | type | comments |\n| --- | --- | --- |\n| content | text | required |\n\ni.e\n```json\n{\n  \"post\": {\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus id diam a interdum. Nam gravida vitae nisl vel aliquet.\"\n  }\n}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Read Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/posts/:post_id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								":post_id"
+							],
+							"variable": [
+								{
+									"key": "post_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"post\": {\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus id diam a interdum. Nam gravida vitae nisl vel aliquet.\"\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/posts/:post_id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								":post_id"
+							],
+							"variable": [
+								{
+									"key": "post_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Update an existing Post\n\n| attribute | type | comments |\n| --- | --- | --- |\n| content | text | required |\n\ni.e\n```json\n{\n  \"post\": {\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus id diam a interdum. Nam gravida vitae nisl vel aliquet.\"\n  }\n}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "\"Delete\" Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/posts/:post_id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								":post_id"
+							],
+							"variable": [
+								{
+									"key": "post_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/posts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "List comments of a Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/posts/:post_id/comments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								":post_id",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "after_comment",
+									"value": "5",
+									"description": "ID of the last comment that is shown on screen",
+									"disabled": true
+								},
+								{
+									"key": "comment_number",
+									"value": "10",
+									"description": "Number of comments to be shown",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "post_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List comments of a Comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/comments/:comment_id/comments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments",
+								":comment_id",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "after_comment",
+									"value": "5",
+									"description": "ID of the last comment that is shown on screen",
+									"disabled": true
+								},
+								{
+									"key": "comment_number",
+									"value": "10",
+									"description": "Number of comments to be shown",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "comment_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "parent_type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "parent_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/comments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments"
+							]
+						},
+						"description": "Create a new Comment\n\n| attribute | type | comments |\n| --- | --- | --- |\n| content | text | required |\n| parent_type | string | required, one of: Post, Comment |\n| parent_id | integer | required |\n\ni.e\n```json\n{\n  \"comment\": {\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus id diam a interdum. Nam gravida vitae nisl vel aliquet.\",\n    \"parent_type\": \"Post\",\n    \"parent_id\": 1\n  }\n}\n\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Comment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"comment\": {\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus id diam a interdum. Nam gravida vitae nisl vel aliquet.\"\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/comments/:comment_id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments",
+								":comment_id"
+							],
+							"variable": [
+								{
+									"key": "comment_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Edit a Comment\n\n| attribute | type | comments |\n| --- | --- | --- |\n| content | text | required |\n\ni.e\n```json\n{\n  \"comment\": {\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse cursus id diam a interdum. Nam gravida vitae nisl vel aliquet.\"\n  }\n}\n\n```"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
